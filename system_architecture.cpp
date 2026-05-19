@@ -1,23 +1,22 @@
 #include <iostream>
 #include <cctype>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 // Create Hero Name
-
 string createHeroName() {
     string name;
-
     while (true) {
         cout << "Enter hero name: ";
         getline(cin, name);
 
-        // Prevent empty input
         if (name.empty()) {
-            cout << "Invalid input. Name cannot be empty." << endl;
+            cout << "Invalid input. The name should not be empty." << endl;
             continue;
         }
 
-        // Check if input contains digits
         bool hasDigit = false;
         for (char c : name) {
             if (isdigit(c)) {
@@ -27,8 +26,8 @@ string createHeroName() {
         }
 
         if (hasDigit) {
-            cout << "Invalid input. Name cannot contain numbers." << endl;
-            continue; // ask again
+            cout << "Invalid input. Please use strings instead of integer." << endl;
+            continue;
         }
 
         cout << "Hero created." << endl;
@@ -37,18 +36,35 @@ string createHeroName() {
 }
 
 int main() {
-    std::string hero1 = createHeroName();
-    std::string hero2 = createHeroName();
-    std::string hero3 = createHeroName();
-    std::string hero4 = createHeroName();
-    std::string hero5 = createHeroName();
-    std::string hero6 = createHeroName();
-    std::string hero7 = createHeroName();
-    std::string hero8 = createHeroName();
-    std::string hero9 = createHeroName();
-    std::string hero10 = createHeroName();
+    srand(time(0)); // seed random number generator
+
+    // Create heroes
+    vector<string> heroes;
+    for (int i = 1; i <= 10; i++) {
+        heroes.push_back(createHeroName());
+    }
+
+    cout << "\n--- Let The Battle Begin! ---\n" << endl;
+
+    // Elimination rounds
+    while (heroes.size() > 1) {
+        int attackerIndex = rand() % heroes.size();
+        int victimIndex;
+
+        // Ensure attacker and victim are different
+        do {
+            victimIndex = rand() % heroes.size();
+        } while (victimIndex == attackerIndex);
+
+        cout << heroes[attackerIndex] << " eliminated " << heroes[victimIndex] << "!" << endl;
+
+        // Remove victim
+        heroes.erase(heroes.begin() + victimIndex);
+    }
+
+    // Winner
+    cout << "\nThe winner is: " << heroes[0] << "!" << endl;
+    cout << "Winner! Winner! Chicken dinner." << endl;
 
     return 0;
 }
-
-//Battle Heroes
