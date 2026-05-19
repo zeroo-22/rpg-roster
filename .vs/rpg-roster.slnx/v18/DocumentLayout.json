@@ -1,5 +1,6 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "WorkspaceRootPath": "C:\\Users\\PC 9\\source\\repos\\rpg-roster\\",
   "Documents": [
     {
@@ -27,10 +28,15 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:system_architecture.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
+=======
+  "WorkspaceRootPath": "C:\\Users\\PC 12\\rpg-roster\\",
+  "Documents": [],
+>>>>>>> a213a3baec9bbfda93e018198a4299044c4b8b09
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
+<<<<<<< HEAD
       "DocumentGroups": [
         {
           "DockedWidth": 200,
@@ -121,6 +127,9 @@
           ]
         }
       ]
+=======
+      "DocumentGroups": []
+>>>>>>> a213a3baec9bbfda93e018198a4299044c4b8b09
     }
   ]
 }
