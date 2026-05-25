@@ -1,3 +1,4 @@
+#include "system_architecture.h"
 #include <iostream>
 #include <cctype>
 #include <vector>
@@ -6,7 +7,7 @@
 using namespace std;
 
 // Create Hero Name
-string createHeroName() {
+string createHeroName(vector<string>& heroes) {
     string name;
     while (true) {
         cout << "Enter hero name: ";
@@ -26,7 +27,21 @@ string createHeroName() {
         }
 
         if (hasDigit) {
-            cout << "Invalid input. Please use strings instead of integer." << endl;
+            cout << "Invalid input. Please use letters only." << endl;
+            continue;
+        }
+
+        // Check for duplicates
+        bool exists = false;
+        for (const auto& hero : heroes) {
+            if (hero == name) {
+                exists = true;
+                break;
+            }
+        }
+
+        if (exists) {
+            cout << "Hero name already exists. Please enter another." << endl;
             continue;
         }
 
@@ -35,36 +50,33 @@ string createHeroName() {
     }
 }
 
-int main() {
+// Battle royale
+void battleHeroes(vector<string>& heroes) {
     srand(time(0)); // seed random number generator
-
-    // Create heroes
-    vector<string> heroes;
-    for (int i = 1; i <= 10; i++) {
-        heroes.push_back(createHeroName());
-    }
 
     cout << "\n--- Let The Battle Begin! ---\n" << endl;
 
-    // Elimination rounds
+    // Elimination 
     while (heroes.size() > 1) {
-        int attackerIndex = rand() % heroes.size();
-        int victimIndex;
+        int player1 = rand() % heroes.size();
+        int player2;
 
-        // Ensure attacker and victim are different
+        // Ensure different players and different names
         do {
-            victimIndex = rand() % heroes.size();
-        } while (victimIndex == attackerIndex);
+            player2 = rand() % heroes.size();
+        } while (player2 == player1 || heroes[player2] == heroes[player1]);
 
-        cout << heroes[attackerIndex] << " eliminated " << heroes[victimIndex] << "!" << endl;
+        // Who will win
+        int winnerIndex = (rand() % 2 == 0) ? player1 : player2;
+        int loserIndex = (winnerIndex == player1) ? player2 : player1;
 
-        // Remove victim
-        heroes.erase(heroes.begin() + victimIndex);
+        cout << heroes[winnerIndex] << " eliminated " << heroes[loserIndex] << "!" << endl;
+
+        // Remove loser
+        heroes.erase(heroes.begin() + loserIndex);
     }
 
     // Winner
     cout << "\nThe winner is: " << heroes[0] << "!" << endl;
     cout << "Winner! Winner! Chicken dinner." << endl;
-
-    return 0;
 }
