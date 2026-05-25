@@ -9,27 +9,27 @@ Character RosterDB::assignStats(const std::string& name, const std::string& role
     c.name = name;
     c.role = role;
 
-    if (role == "Fighter") {
+    if (role == "Assault") {
         c.damage = 18;
         c.health = 110;
         c.defense = 12;
     }
-    else if (role == "Marksman") {
+    else if (role == "Sharpshooter") {
         c.damage = 22;
         c.health = 90;
         c.defense = 6;
     }
-    else if (role == "Tank") {
+    else if (role == "Engineer") {
         c.damage = 12;
         c.health = 160;
         c.defense = 20;
     }
-    else if (role == "Assassin") {
+    else if (role == "Recon") {
         c.damage = 30;
         c.health = 75;
         c.defense = 4;
     }
-    else if (role == "Mage") {
+    else if (role == "Support") {
         c.damage = 25;
         c.health = 85;
         c.defense = 5;

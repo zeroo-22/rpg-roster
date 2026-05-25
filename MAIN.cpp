@@ -39,21 +39,21 @@ int main() {
 
             int roleChoice;
             cout << "Choose role:\n";
-            cout << "1. Fighter\n";
-            cout << "2. Marksman\n";
-            cout << "3. Tank\n";
-            cout << "4. Assassin\n";
-            cout << "5. Mage\n";
+            cout << "1. Assault\n";
+            cout << "2. Sharpshooter\n";
+            cout << "3. Engineer\n";
+            cout << "4. Recon\n";
+            cout << "5. Support\n";
             cout << "Enter choice (1-5): ";
             cin >> roleChoice;
 
             string role;
             switch (roleChoice) {
-            case 1: role = "Fighter"; break;
-            case 2: role = "Marksman"; break;
-            case 3: role = "Tank"; break;
-            case 4: role = "Assassin"; break;
-            case 5: role = "Mage"; break;
+            case 1: role = "Assault"; break;
+            case 2: role = "Sharpshooter"; break;
+            case 3: role = "Engineer"; break;
+            case 4: role = "Recon"; break;
+            case 5: role = "Support"; break;
             default:
                 cout << "Invalid choice. Role not assigned." << endl;
                 break;
